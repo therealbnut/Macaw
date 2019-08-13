@@ -5,6 +5,10 @@
 //  Created by Yuri Strot on 4/11/18.
 //
 
+public protocol SVGMeasurable {
+    var intrinsicSize: Size { get }
+}
+
 class SVGCanvas: Group {
 
     let layout: NodeLayout
@@ -28,4 +32,10 @@ class SVGCanvas: Group {
         return size.rect(at: .origin)
     }
 
+}
+
+extension SVGCanvas: SVGMeasurable {
+    public var intrinsicSize: Size {
+        return self.bounds?.size() ?? self.layout.viewBox?.size() ?? .zero
+    }
 }

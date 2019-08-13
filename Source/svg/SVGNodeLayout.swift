@@ -39,6 +39,8 @@ class SVGSize {
 }
 
 protocol NodeLayout {
+    
+    var viewBox: Rect? { get }
 
     func computeSize(parent: Size) -> Size
 
